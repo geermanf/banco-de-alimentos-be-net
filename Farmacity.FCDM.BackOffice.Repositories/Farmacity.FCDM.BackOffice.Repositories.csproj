@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.1.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0" />
+    <PackageReference Include="LinqKit.Microsoft.EntityFrameworkCore" Version="1.1.16" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Farmacity.FCDM.BackOffice.Context\Farmacity.FCDM.BackOffice.Context.csproj" />
+    <ProjectReference Include="..\Farmacity.FCDM.BackOffice.DTOs\Farmacity.FCDM.BackOffice.DTOs.csproj" />
+    <ProjectReference Include="..\Farmacity.FCDM.BackOffice.Entities\Farmacity.FCDM.BackOffice.Entities.csproj" />
+  </ItemGroup>
+
+</Project>

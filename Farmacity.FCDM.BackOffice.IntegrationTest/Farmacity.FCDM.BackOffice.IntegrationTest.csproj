@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentAssertions" Version="5.5.3" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="2.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="2.2.6" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.8.0" />
+    <PackageReference Include="xunit" Version="2.4.0" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Farmacity.FCDM.BackOffice.Configuration\Farmacity.FCDM.BackOffice.Configuration.csproj" />
+    <ProjectReference Include="..\Farmacity.FCDM.BackOffice.Constants\Farmacity.FCDM.BackOffice.Constants.csproj" />
+    <ProjectReference Include="..\Farmacity.FCDM.BackOffice.Context\Farmacity.FCDM.BackOffice.Context.csproj" />
+    <ProjectReference Include="..\Farmacity.FCDM.BackOffice.Repositories\Farmacity.FCDM.BackOffice.Repositories.csproj" />
+    <ProjectReference Include="..\Farmacity.FCDM.BackOffice.Services\Farmacity.FCDM.BackOffice.Services.csproj" />
+    <ProjectReference Include="..\Farmacity.FCDM.BackOffice\Farmacity.FCDM.BackOffice.csproj" />
+    <ProjectReference Include="..\Farmacity.FCDM.Client\Farmacity.FCDM.Client.csproj" />
+    <ProjectReference Include="..\Infrastructure\Farmacity.FCDM.BackOffice.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
