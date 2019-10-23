@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Farmacity.FCDM.BackOffice.Infrastructure
+namespace BancoDeAlimentos.Infrastructure
 {
     public class AppToken
     {

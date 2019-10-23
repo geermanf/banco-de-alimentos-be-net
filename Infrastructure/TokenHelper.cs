@@ -1,5 +1,5 @@
-﻿using Farmacity.FCDM.BackOffice.Configuration;
-using Farmacity.FCDM.BackOffice.Constants;
+﻿using BancoDeAlimentos.Configuration;
+using BancoDeAlimentos.Constants;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
@@ -7,9 +7,9 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using Microsoft.Extensions.Configuration;
-using Farmacity.FCDM.BackOffice.DTOs;
+using BancoDeAlimentos.DTOs;
 
-namespace Farmacity.FCDM.BackOffice.Infrastructure
+namespace BancoDeAlimentos.Infrastructure
 {
     public class TokenHelper
     {

@@ -1,6 +1,6 @@
-﻿using Farmacity.FCDM.BackOffice.DTOs.Response;
-using Farmacity.FCDM.BackOffice.Entities.Common;
-using Farmacity.FCDM.BackOffice.Infrastructure.Exceptions;
+﻿using BancoDeAlimentos.DTOs.Response;
+using BancoDeAlimentos.Entities.Common;
+using BancoDeAlimentos.Infrastructure.Exceptions;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using System;
@@ -8,7 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace Farmacity.FCDM.BackOffice.Infrastructure
+namespace BancoDeAlimentos.Infrastructure
 {
     public class ExceptionHandlingMiddleware
     {

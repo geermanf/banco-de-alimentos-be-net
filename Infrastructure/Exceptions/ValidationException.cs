@@ -1,8 +1,8 @@
-﻿using Farmacity.FCDM.BackOffice.DTOs.Response;
+﻿using BancoDeAlimentos.DTOs.Response;
 using System;
 
 
-namespace Farmacity.FCDM.BackOffice.Infrastructure.Exceptions
+namespace BancoDeAlimentos.Infrastructure.Exceptions
 {
     public class ValidationException : ArgumentException
     {
