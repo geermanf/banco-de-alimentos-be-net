@@ -55,8 +55,9 @@ namespace BancoDeAlimentos
             {
                 options.AddPolicy("AllowAllOrigins",
                     builder => builder.AllowAnyOrigin()
+                        .AllowAnyMethod()
                         .AllowAnyHeader()
-                        .AllowAnyMethod());
+                        .AllowCredentials());
             });
 
             services.AddSpaStaticFiles(c =>
@@ -134,7 +135,7 @@ namespace BancoDeAlimentos
                            {
                                ValidateIssuer = true,
                                ValidateAudience = true,
-                               ValidateLifetime = true,
+                               ValidateLifetime = false,
                                ValidateIssuerSigningKey = true,
 
 
@@ -183,6 +184,8 @@ namespace BancoDeAlimentos
                 c.DocumentTitle = configuration.Title;
                 c.DocExpansion(DocExpansion.List);
             });
+
+            app.UseCors("AllowAllOrigins");
 
             app.UseHttpsRedirection();
 
