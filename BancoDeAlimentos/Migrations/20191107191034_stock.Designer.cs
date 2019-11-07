@@ -4,14 +4,16 @@ using BancoDeAlimentos.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BancoDeAlimentos.Migrations
 {
     [DbContext(typeof(DB_FCDM_BackOfficeContext))]
-    partial class DB_FCDM_BackOfficeContextModelSnapshot : ModelSnapshot
+    [Migration("20191107191034_stock")]
+    partial class stock
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -90,26 +92,6 @@ namespace BancoDeAlimentos.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Organizations");
-                });
-
-            modelBuilder.Entity("BancoDeAlimentos.Entities.Product", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Description");
-
-                    b.Property<string>("Key");
-
-                    b.Property<string>("Name")
-                        .IsRequired();
-
-                    b.Property<int>("Stock");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("BancoDeAlimentos.Entities.InternalUser", b =>

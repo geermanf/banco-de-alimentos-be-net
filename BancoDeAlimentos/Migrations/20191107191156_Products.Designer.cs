@@ -4,14 +4,16 @@ using BancoDeAlimentos.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BancoDeAlimentos.Migrations
 {
     [DbContext(typeof(DB_FCDM_BackOfficeContext))]
-    partial class DB_FCDM_BackOfficeContextModelSnapshot : ModelSnapshot
+    [Migration("20191107191156_Products")]
+    partial class Products
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -105,7 +107,7 @@ namespace BancoDeAlimentos.Migrations
                     b.Property<string>("Name")
                         .IsRequired();
 
-                    b.Property<int>("Stock");
+                    b.Property<string>("Stock");
 
                     b.HasKey("Id");
 

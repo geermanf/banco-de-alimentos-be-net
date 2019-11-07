@@ -20,5 +20,6 @@ namespace BancoDeAlimentos.Context
 
         public virtual DbSet<InternalUser> InternalUsers { get; set; }
         public virtual DbSet<Organization> Organizations { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
     }
 }
