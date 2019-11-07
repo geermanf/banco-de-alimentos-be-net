@@ -5,6 +5,7 @@ using BancoDeAlimentos.Entities;
 using BancoDeAlimentos.Entities.Common;
 using BancoDeAlimentos.Entities.Enum;
 using BancoDeAlimentos.Repositories;
+using BancoDeAlimentos.Services.BusinessLogic;
 using LinqKit;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -20,11 +21,13 @@ namespace BancoDeAlimentos.Services.Implementation
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
+        private readonly EmailSender _emailSender;
 
-        public OrganizationService(IUnitOfWork unitOfWork, IMapper mapper)
+        public OrganizationService(IUnitOfWork unitOfWork, IMapper mapper, EmailSender emailSender)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            _emailSender = emailSender;
         }
 
         public Organization Get(string key)
@@ -68,6 +71,9 @@ namespace BancoDeAlimentos.Services.Implementation
             organization.Status = "Awaiting";
 
             _unitOfWork.OrganizationRepository.Add(organization);
+
+            _emailSender.SendAwaitingRequestEmail(organization);
+
             _unitOfWork.Complete();
 
             return organization;
@@ -91,6 +97,17 @@ namespace BancoDeAlimentos.Services.Implementation
 
             organization.Status = status;
             _unitOfWork.OrganizationRepository.Update(organization);
+
+            if (status == "Rejected")
+            {
+                _emailSender.SendRejectedRequestEmail(organization);
+
+            }
+            else if (status == "Approved")
+            {
+                _emailSender.SendApprovedRequestEmail(organization);
+            }
+
             _unitOfWork.Complete();
         }
 

@@ -6,6 +6,7 @@ using BancoDeAlimentos.Infrastructure;
 using BancoDeAlimentos.Repositories;
 using BancoDeAlimentos.Repositories.Implementation;
 using BancoDeAlimentos.Services;
+using BancoDeAlimentos.Services.BusinessLogic;
 using BancoDeAlimentos.Services.Implementation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -79,6 +80,7 @@ namespace BancoDeAlimentos
             services.AddTransient<IOrganizationService, OrganizationService>();
 
             services.AddTransient<TokenHelper, TokenHelper>();
+            services.AddTransient<EmailSender>();
 
 
             services.AddTransient<IUnitOfWork, UnitOfWork>();
