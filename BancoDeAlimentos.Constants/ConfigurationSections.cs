@@ -7,6 +7,7 @@
         public const string SmtpEtherealConfiguration = "SmtpEtherealConfiguration";
         public const string ApiInformation = "ApiInformation";
         public const string SwaggerEnabled = "SwaggerEnabled";
+        public const string SmtpConfiguration = "SmtpConfiguration";
     }
 
 }
