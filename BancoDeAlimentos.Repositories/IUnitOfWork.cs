@@ -10,6 +10,9 @@ namespace BancoDeAlimentos.Repositories
 
         IInternalUserRepository InternalUserRepository { get; }
         IOrganizationRepository OrganizationRepository { get; }
+        IProductRepository ProductRepository { get; }
+
+        void GenerateBaseData();
 
         int Complete();
         Task<int> CompleteAsync();

@@ -48,5 +48,24 @@ namespace BancoDeAlimentos.Controllers
 
             return Ok("Migrations applied");
         }
+
+        /// <summary>
+        /// Genera información inicial
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("generate-data")]
+        public ActionResult GenerateData()
+        {
+            try
+            {
+                _unitOfWork.GenerateBaseData();
+                return Ok("Data generated");
+            }
+            catch (Exception ex)
+            {
+                //await _logger.
+                return Conflict(ex.Message);
+            }
+        }
     }
 }
