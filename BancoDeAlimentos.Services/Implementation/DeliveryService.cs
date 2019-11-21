@@ -32,8 +32,37 @@ namespace BancoDeAlimentos.Services.Implementation
 
         public IEnumerable<Product> GetStock()
         {
-            return _unitOfWork.ProductRepository.GetAll(); ;
+            return _unitOfWork.ProductRepository.GetAll();
         }
-        
+
+        public IEnumerable<DeliveryDto> GetAllDone()
+        {
+            var deliveries = _unitOfWork.DeliveryRepository.GetAll(d => d.Include(de => de.Organization).Include(de => de.ProductDeliverys).ThenInclude(pd => pd.Product))
+                                                .Where(d => d.Status == DeliveryStatus.Done);
+            return Dto(deliveries);
+        }
+        public IEnumerable<DeliveryDto> GetAllPending()
+        {
+            var deliveries = _unitOfWork.DeliveryRepository.GetAll(d => d.Include(de => de.Organization).Include(de => de.ProductDeliverys).ThenInclude(pd => pd.Product))
+                                                .Where(d => d.Status == DeliveryStatus.Pending);
+            return Dto(deliveries);
+        }
+
+        public IEnumerable<ProductDeliveryDto> GetProductsByKey(string key)
+        {
+            var products = _unitOfWork.DeliveryRepository.FindEntity(e => e.Key == key,d => d.Include(de => de.ProductDeliverys).ThenInclude(pd => pd.Product)).ProductDeliverys;
+            return Dto(products);
+        }
+
+        protected IEnumerable<DeliveryDto> Dto(IEnumerable<Delivery> source)
+        {
+            return _mapper.Map<IEnumerable<DeliveryDto>>(source);
+        }
+
+        protected IEnumerable<ProductDeliveryDto> Dto(IEnumerable<ProductDelivery> source)
+        {
+            return _mapper.Map<IEnumerable<ProductDeliveryDto>>(source);
+        }
+
     }
 }

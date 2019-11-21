@@ -16,10 +16,20 @@ namespace BancoDeAlimentos.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("ProductVersion", "2.2.4-servicing-10062");
+
+            modelBuilder.Entity<ProductDelivery>()
+                 .HasKey(bc => new { bc.ProductId, bc.DeliveryId });
+
+            modelBuilder.Entity<ProductDelivery>()
+                .HasOne(bc => bc.Delivery)
+                .WithMany(b => b.ProductDeliverys)
+                .HasForeignKey(bc => bc.DeliveryId);
         }
 
         public virtual DbSet<InternalUser> InternalUsers { get; set; }
         public virtual DbSet<Organization> Organizations { get; set; }
         public virtual DbSet<Product> Products { get; set; }
+
+        public virtual DbSet<Delivery> Deliverys { get; set; }
     }
 }

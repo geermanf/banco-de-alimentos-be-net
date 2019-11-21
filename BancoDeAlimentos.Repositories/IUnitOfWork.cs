@@ -11,6 +11,7 @@ namespace BancoDeAlimentos.Repositories
         IInternalUserRepository InternalUserRepository { get; }
         IOrganizationRepository OrganizationRepository { get; }
         IProductRepository ProductRepository { get; }
+        IDeliveryRepository DeliveryRepository { get; }
 
         void GenerateBaseData();
 

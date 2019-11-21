@@ -11,5 +11,11 @@ namespace BancoDeAlimentos.Services
     public interface IDeliveryService
     {
         IEnumerable<Product> GetStock();
+
+        IEnumerable<DeliveryDto> GetAllDone();
+
+        IEnumerable<DeliveryDto> GetAllPending();
+
+        IEnumerable<ProductDeliveryDto> GetProductsByKey(string key);
     }
 }

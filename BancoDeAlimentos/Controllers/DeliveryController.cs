@@ -40,6 +40,45 @@ namespace BancoDeAlimentos.Controllers
 
             return Ok(stock);
         }
-        
+
+        [Authorize]
+        [HttpGet("GetAllDone")]
+        public async Task<IActionResult> GetAllDone()
+        {
+            _logger.LogInformation("");
+
+            IEnumerable<DeliveryDto> deliveries = _deliveryService.GetAllDone();
+
+            _logger.LogInformation("");
+
+            return Ok(deliveries);
+        }
+
+        [Authorize]
+        [HttpGet("GetAllPending")]
+        public async Task<IActionResult> GetAllPending()
+        {
+            _logger.LogInformation("");
+
+            IEnumerable<DeliveryDto> deliveries = _deliveryService.GetAllPending();
+
+            _logger.LogInformation("");
+
+            return Ok(deliveries);
+        }
+
+        [Authorize]
+        [HttpGet("GetProductsByKey/{key}")]
+        public async Task<IActionResult> GetProductsByKey(String key)
+        {
+            _logger.LogInformation("");
+
+            IEnumerable<ProductDeliveryDto> products = _deliveryService.GetProductsByKey(key);
+
+            _logger.LogInformation("");
+
+            return Ok(products);
+        }
+
     }
 }
