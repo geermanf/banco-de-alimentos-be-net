@@ -80,8 +80,10 @@ namespace BancoDeAlimentos
             services.AddTransient<IOrganizationService, OrganizationService>();
 
             services.AddTransient<IProductRepository, ProductRepository>();
+            
 
             services.AddTransient<IDeliveryService, DeliveryService>();
+            services.AddTransient<IDeliveryRepository, DeliveryRepository>();
 
             services.AddTransient<TokenHelper, TokenHelper>();
             services.AddTransient<EmailSender>();

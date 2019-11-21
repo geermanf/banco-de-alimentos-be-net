@@ -11,14 +11,18 @@ namespace BancoDeAlimentos.Repositories.Implementation
         public IOrganizationRepository OrganizationRepository { get; }
         public IProductRepository ProductRepository { get; }
 
+        public IDeliveryRepository DeliveryRepository { get; }
+
 
         private readonly DB_FCDM_BackOfficeContext _dbContext;
 
-        public UnitOfWork (IInternalUserRepository internalUserRepository, IOrganizationRepository organizationRepository, IProductRepository productRepository, DB_FCDM_BackOfficeContext dbContext)
+        public UnitOfWork (IInternalUserRepository internalUserRepository, IOrganizationRepository organizationRepository,
+                            IProductRepository productRepository, IDeliveryRepository deliveryRepository, DB_FCDM_BackOfficeContext dbContext)
         {
             InternalUserRepository = internalUserRepository;
             OrganizationRepository = organizationRepository;
             ProductRepository = productRepository;
+            DeliveryRepository = deliveryRepository;
             _dbContext = dbContext;
         }
 
@@ -134,6 +138,7 @@ namespace BancoDeAlimentos.Repositories.Implementation
 
             if (!_dbContext.InternalUsers.AnyAsync(x => x.Email == "admin").Result)
                 _dbContext.InternalUsers.Add(new Entities.InternalUser { Email = "admin", IsOrganization = false, Key = "admin", Password = "admin", Status = Entities.Enum.InternalUserStatus.Enabled, OrganizationInfo = null });
+
 
             Complete();
         }

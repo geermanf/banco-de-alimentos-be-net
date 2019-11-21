@@ -4,14 +4,16 @@ using BancoDeAlimentos.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BancoDeAlimentos.Migrations
 {
     [DbContext(typeof(DB_FCDM_BackOfficeContext))]
-    partial class DB_FCDM_BackOfficeContextModelSnapshot : ModelSnapshot
+    [Migration("20191121015027_deliveryFirstMigration")]
+    partial class deliveryFirstMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -123,6 +125,8 @@ namespace BancoDeAlimentos.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<long?>("DeliveryId");
+
                     b.Property<string>("Description");
 
                     b.Property<string>("Key");
@@ -134,22 +138,9 @@ namespace BancoDeAlimentos.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Products");
-                });
-
-            modelBuilder.Entity("BancoDeAlimentos.Entities.ProductDelivery", b =>
-                {
-                    b.Property<long>("ProductId");
-
-                    b.Property<long>("DeliveryId");
-
-                    b.Property<int>("Quantity");
-
-                    b.HasKey("ProductId", "DeliveryId");
-
                     b.HasIndex("DeliveryId");
 
-                    b.ToTable("ProductDelivery");
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("BancoDeAlimentos.Entities.Delivery", b =>
@@ -167,17 +158,11 @@ namespace BancoDeAlimentos.Migrations
                         .HasForeignKey("OrganizationInfoId");
                 });
 
-            modelBuilder.Entity("BancoDeAlimentos.Entities.ProductDelivery", b =>
+            modelBuilder.Entity("BancoDeAlimentos.Entities.Product", b =>
                 {
-                    b.HasOne("BancoDeAlimentos.Entities.Delivery", "Delivery")
-                        .WithMany("ProductDeliverys")
-                        .HasForeignKey("DeliveryId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("BancoDeAlimentos.Entities.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                    b.HasOne("BancoDeAlimentos.Entities.Delivery")
+                        .WithMany("Products")
+                        .HasForeignKey("DeliveryId");
                 });
 #pragma warning restore 612, 618
         }
