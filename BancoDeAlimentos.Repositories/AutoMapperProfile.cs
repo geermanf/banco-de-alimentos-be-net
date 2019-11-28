@@ -21,6 +21,11 @@ namespace BancoDeAlimentos.Repositories
             CreateMap<RegisterOrganizationRequest, Organization>(MemberList.None)
                 .ForMember(dest => dest.Status, opt => opt.Ignore());
 
+            CreateMap<RegisterNewDeliveryRequest, Delivery>(MemberList.None)
+                .ForMember(dest => dest.Status, opt => opt.MapFrom(del => DeliveryStatus.Pending))
+                .ForMember(dest => dest.EffectiveDate, opt => opt.MapFrom(del => new DateTime(1990, 1, 1)))
+                .ForMember(dest => dest.ExpiredProducts, opt => opt.MapFrom(del => false));
+
             CreateMap<Delivery, DeliveryDto>(MemberList.None)
                 .ForMember(dest => dest.Status, opt => opt.ToString())
                 .ForMember(dest => dest.ProductDeliverys, opt => opt.MapFrom(del => del.ProductDeliverys.Select(pd => new ProductDeliveryDto { ProductName = pd.Product.Name, Quantity = pd.Quantity })))
