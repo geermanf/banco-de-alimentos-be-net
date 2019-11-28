@@ -14,6 +14,7 @@ El proyecto abrirá en tu navegador el url "https://localhost:44350/swagger".
 Swagger nos permite provar todos los endpoints desde esa misma web.
 
 Para correr las migraciones (crear la base de datos o actualizarla al modelo actual) se puede utilizar el endpoint */api/migrate*
+
 Además, el endpoint */api/generate-data* nos va a crear una informacion basica en la BBDD para poder iniciar a trabajar.
 
 Creará un usuario de tipo "empleado del banco de alimentos" con email: admin y password: admin
