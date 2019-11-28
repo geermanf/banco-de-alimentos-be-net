@@ -111,28 +111,5 @@ namespace BancoDeAlimentos.Services.Implementation
             _unitOfWork.Complete();
         }
 
-        //public InternalUserDto Update(InternalUserRequest updateInternalUserRequest)
-        //{
-        //    InternalUser internalUser = _unitOfWork.InternalUserRepository.FindEntity(x.Key == updateInternalUserRequest.Key, source => source.Include(a => a.Role).ThenInclude(b => b.RolePermission));
-        //    internalUser.ThrowNotFoundIfNull();
-
-        //    _mapper.Map(updateInternalUserRequest, internalUser);
-        //    _unitOfWork.InternalUserRepository.Update(internalUser);
-        //    _unitOfWork.Complete();
-
-        //    return _mapper.Map<InternalUserDto>(internalUser);
-        //}
-
-
-
-
-        //public void Remove(string key)
-        //{
-        //    InternalUser internalUser = _unitOfWork.InternalUserRepository.FindEntity(x => x.InternalUserType == InternalUserType.ActiveDirectory && x.Key == key);
-        //    internalUser.ThrowNotFoundIfNull();
-
-        //    _unitOfWork.InternalUserRepository.Remove(internalUser.Id);
-        //    _unitOfWork.Complete();
-        //}
     }
 }

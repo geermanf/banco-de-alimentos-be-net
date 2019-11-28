@@ -3,8 +3,6 @@ using BancoDeAlimentos.DTOs.Request;
 using BancoDeAlimentos.Entities;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BancoDeAlimentos.Services
 {
@@ -17,5 +15,13 @@ namespace BancoDeAlimentos.Services
         IEnumerable<DeliveryDto> GetAllPending();
 
         IEnumerable<ProductDeliveryDto> GetProductsByKey(string key);
+
+        IEnumerable<DeliveryDto> GetAllDoneByOrganizationKey(string key);
+
+        IEnumerable<DeliveryDto> GetAllPendingByOrganizationKey(string key);
+
+        void ConfirmDelivery(ConfirmDeliveryRequest request);
+
+        void RegisterNewDelivery(RegisterNewDeliveryRequest request);
     }
 }

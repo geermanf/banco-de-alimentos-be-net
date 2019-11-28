@@ -68,8 +68,34 @@ namespace BancoDeAlimentos.Controllers
         }
 
         [Authorize]
+        [HttpGet("GetAllDoneByOrganizationKey/{key}")]
+        public async Task<IActionResult> GetAllDoneByOrganizationKey(string key)
+        {
+            _logger.LogInformation("");
+
+            IEnumerable<DeliveryDto> deliveries = _deliveryService.GetAllDoneByOrganizationKey(key);
+
+            _logger.LogInformation("");
+
+            return Ok(deliveries);
+        }
+
+        [Authorize]
+        [HttpGet("GetAllPendingByOrganizationKey/{key}")]
+        public async Task<IActionResult> GetAllPendingByOrganizationKey(string key)
+        {
+            _logger.LogInformation("");
+
+            IEnumerable<DeliveryDto> deliveries = _deliveryService.GetAllPendingByOrganizationKey(key);
+
+            _logger.LogInformation("");
+
+            return Ok(deliveries);
+        }
+
+        [Authorize]
         [HttpGet("GetProductsByKey/{key}")]
-        public async Task<IActionResult> GetProductsByKey(String key)
+        public async Task<IActionResult> GetProductsByKey(string key)
         {
             _logger.LogInformation("");
 
@@ -78,6 +104,32 @@ namespace BancoDeAlimentos.Controllers
             _logger.LogInformation("");
 
             return Ok(products);
+        }
+
+        [Authorize]
+        [HttpPost("ConfirmDelivery")]
+        public async Task<IActionResult> ConfirmDelivery([FromBody]ConfirmDeliveryRequest request)
+        {
+            _logger.LogInformation("");
+
+            _deliveryService.ConfirmDelivery(request);
+
+            _logger.LogInformation("");
+
+            return Ok();
+        }
+
+        [Authorize]
+        [HttpPost("Register")]
+        public async Task<IActionResult> RegisterNewDelivery([FromBody]RegisterNewDeliveryRequest request)
+        {
+            _logger.LogInformation("");
+
+            _deliveryService.RegisterNewDelivery(request);
+
+            _logger.LogInformation("");
+
+            return Ok();
         }
 
     }
